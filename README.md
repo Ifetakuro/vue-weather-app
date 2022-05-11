@@ -1,8 +1,5 @@
 # vue-weather-app
 
-## Netlify
-[![Netlify Status](https://api.netlify.com/api/v1/badges/639dd9ba-ab8d-455b-8631-bb82724b5e0e/deploy-status)](https://app.netlify.com/sites/my-vue-weather-app/deploys)
-
 ## Project setup
 ```
 npm install
