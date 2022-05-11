@@ -1,5 +1,5 @@
 <template>
- <div id="app" :class="typeof weather.main != 'undefined' && weather.weather[0].main !== 'clear' ? 'cloud' : ''">
+ <div id="app" :class="typeof weather.main === 'undefined' || weather.weather[0].main === 'Clear' ? 'clear' : 'cloud'">
     <header class="flex gap-4 p-5">
       <h1 class="text-white text-xl">Weather App</h1>
       <img :src="gif" alt="loading gif" class="w-8 h-8"/>
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     fetchWeather() {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.apiKey}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.city.toLowerCase()}&units=metric&appid=${this.apiKey}`)
       .then(res => {
         return res.json()
       }).then(this.setResults)
@@ -83,16 +83,20 @@ export default {
   }
 
   #app {
-    background-image: url('./assets/clear.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     
     /* -webkit-backdrop-filter: blur(5px); */
     min-height: 100vh;
     
+    background-image: url('./assets/clear.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgba(18, 10, 33, 0.7);
     background-blend-mode: darken;
+  }
+
+  #app.clear {
+    background-image: url('./assets/clear.jpg');
   }
 
   #app.cloud {
