@@ -41,7 +41,7 @@ export default {
   name: 'App',
   data() {
     return {
-      apiKey: 'ddcc0f7917ea565687de6b4b9aeb799c',
+      apiKey: process.env.VUE_APP_API_KEY,
       city: '',
       weather: {},
   
@@ -90,7 +90,7 @@ export default {
     
     /* -webkit-backdrop-filter: blur(5px); */
     min-height: 100vh;
-    transition: 0.4s;
+    
     background-color: rgba(18, 10, 33, 0.7);
     background-blend-mode: darken;
   }
